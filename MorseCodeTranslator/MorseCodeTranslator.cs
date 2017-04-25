@@ -70,6 +70,16 @@ namespace MorseCodeTranslator
             {'Ü', "..--"}
         };
 
+        private static Dictionary<string, char> _morseToText = new Dictionary<string, char>();
+
+        static MorseCodeTranslator()
+        {
+            foreach (KeyValuePair<char, string> code in _textToMorse)
+            {
+                _morseToText.Add(code.Value, code.Key);
+            }
+        }
+
         public static string ToMorse(string input)
         {
             List<string> output = new List<string>(input.Length);
